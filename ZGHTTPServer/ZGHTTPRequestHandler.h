@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ZGHTTPConfig.h"
 
+
+
 @interface ZGHTTPRequestHandler : NSObject
 @property(nonatomic, readonly) ZGHTTPRequestHead *requestHead;
 @property(nonatomic, readonly) u_int64_t bodyDataLength;
@@ -38,4 +40,6 @@
 - (void)setVersion:(NSString *)version;
 - (void)setHost:(NSString *)host;
 - (void)setHeadDic:(NSDictionary *)headDic;
+- (BOOL)hasRangeHead;
+- (NSRange)range;
 @end

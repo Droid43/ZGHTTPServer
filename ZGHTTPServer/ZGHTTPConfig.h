@@ -50,10 +50,10 @@
 /**
  写数据
 
- @param data 写入的内容
- @param offset 写入位置
- @param path 写入路径
- @param head 请求头
+ @param data <#data description#>
+ @param offset <#offset description#>
+ @param path <#path description#>
+ @param head <#head description#>
  */
 - (void)requestBodyData:(NSData *)data
               atOffset:(u_int64_t)offset
@@ -64,8 +64,8 @@
 /**
  出现错误
 
- @param error 错误描述
- @param head 请求头
+ @param error <#error description#>
+ @param head <#head description#>
  */
 - (void)requestBodyDataError:(NSError *)error
                        head:(ZGHTTPRequestHead *)head;
@@ -122,7 +122,7 @@
 @property(nonatomic, assign) BOOL isDirectory;
 @property(nonatomic, copy) NSString *relativeUrl;
 @property(nonatomic, copy) NSString *modifyTime;
-@property(nonatomic, copy) NSString *size;
+@property(nonatomic, assign) u_int64_t size;
 @end
 
 

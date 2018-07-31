@@ -181,6 +181,22 @@
     self.headDic = head;
     return res;
 }
+
+- (BOOL)hasRangeHead{
+    return [self.headDic[@"Range"] hasPrefix:@"bytes="];
+}
+- (NSRange)range{
+    if([self hasRangeHead]){
+        NSString *rangeStr = [self.headDic[@"Range"] stringByReplacingOccurrencesOfString:@"bytes=" withString:@""];
+        NSArray *strs = [rangeStr componentsSeparatedByString:@"-"];
+        NSUInteger start = [strs.firstObject integerValue];
+        NSUInteger end = [strs.lastObject integerValue];
+        NSUInteger length = end  - start;
+        length = length != 0 ? length + 1:NSUIntegerMax;
+        return NSMakeRange(start, length);
+    }
+    return NSMakeRange(0, 0);
+}
 @end
 #pragma clang diagnostic pop
 

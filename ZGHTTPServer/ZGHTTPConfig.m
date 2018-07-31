@@ -8,6 +8,8 @@
 
 #import "ZGHTTPConfig.h"
 
+
+
 @implementation ZGHTTPRequestHead
 - (void)setMethod:(NSString *)method{
     _method = [method copy];

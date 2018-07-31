@@ -19,5 +19,7 @@
 - (void)stop;
 - (uint16_t)port;
 - (void)setPort:(uint16_t) port;
+- (NSString *)IP;
+- (NSString *)urlString;
 @end
 

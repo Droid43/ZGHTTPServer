@@ -23,6 +23,7 @@ long kZGHTTPResquestBodyTag = 101;
 long kZGHTTPResponseHeadTag = 102;
 long kZGHTTPResPonseBodyTag = 103;
 
+
 long kZGHTTPResquestErrorTag = 108;
 
 + (instancetype)initWithConfig:(ZGHTTPConfig *)config
@@ -30,7 +31,6 @@ long kZGHTTPResquestErrorTag = 108;
                      complete:(ZGHTTPTaskCompleteBlock) completeBlock{
     return [[self alloc] initWithConfig:config socket:socket complete:completeBlock];
 }
-
 - (instancetype)initWithConfig:(ZGHTTPConfig *)config
                        socket:(GCDAsyncSocket *)socket
                      complete:(ZGHTTPTaskCompleteBlock) completeBlock{
@@ -43,17 +43,18 @@ long kZGHTTPResquestErrorTag = 108;
     return self;
 }
 
+
 - (void)execute{
     [_socket  readDataToData:[@"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:kZGHTTPConnectTimeout tag:kZGHTTPResquestHeadTag];
 }
-
 - (void)checkRequsetFinish{
     if(![_requestHandler isRequestFinish]){
-        [_socket  readDataWithTimeout:kZGHTTPConnectTimeout tag:kZGHTTPResquestBodyTag];
+        [_socket readDataWithTimeout:kZGHTTPConnectTimeout tag:kZGHTTPResquestBodyTag];
     }else{
         self.responseHandeler = [ZGHTTPResponseHandeler initWithRequestHead:_requestHandler.requestHead
                                                                    delegate:_config.responseDelegate
                                                                     rootDir:_config.rootDirectory];
+        
         [_socket writeData:[_responseHandeler readAllHeadData] withTimeout:kZGHTTPConnectTimeout tag:kZGHTTPResponseHeadTag];
     }
 
@@ -62,9 +63,7 @@ long kZGHTTPResquestErrorTag = 108;
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     if(tag == kZGHTTPResquestHeadTag){
-        self.requestHandler = [ZGHTTPRequestHandler initWithHeadData:data
-                                                            delegate:_config.requestDelegate
-                                                             rootDir:_config.rootDirectory];
+        self.requestHandler = [ZGHTTPRequestHandler initWithHeadData:data delegate:_config.requestDelegate rootDir:_config.rootDirectory];
         NSError *error = [_requestHandler invalidError];
         if(error){
             self.responseHandeler = [ZGHTTPResponseHandeler initWithError:error requestHead:_requestHandler.requestHead];
@@ -100,9 +99,13 @@ long kZGHTTPResquestErrorTag = 108;
     }else if(tag == kZGHTTPResPonseBodyTag){
         [self checkResponsetFinish];
     }
+    
 }
 
+
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
+    _responseHandeler = nil;
+    _requestHandler = nil;
     if(_completeBlock) _completeBlock(self);
 
 }

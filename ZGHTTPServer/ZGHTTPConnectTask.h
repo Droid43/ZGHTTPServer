@@ -3,7 +3,7 @@
 //  SampleHttpService
 //
 //  Created by Zeng Gen on 08/06/2017.
-//  Copyright © 2017 Zeng Gen. All rights reserved.
+//  Copyright © 2017 konka. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,15 +15,15 @@
 typedef void(^ZGHTTPTaskCompleteBlock)(ZGHTTPConnectTask *task);
 
 @interface ZGHTTPConnectTask : NSObject
-+ (instancetype)initWithConfig:(ZGHTTPConfig *)config
++(instancetype)initWithConfig:(ZGHTTPConfig *)config
                        socket:(GCDAsyncSocket *)socket
                      complete:(ZGHTTPTaskCompleteBlock) completeBlock;
 
-- (instancetype)initWithConfig:(ZGHTTPConfig *)config
+-(instancetype)initWithConfig:(ZGHTTPConfig *)config
                        socket:(GCDAsyncSocket *)socket
                      complete:(ZGHTTPTaskCompleteBlock) completeBlock;
 
-- (void)execute;
+-(void)execute;
 @end
 
 @interface ZGHTTPConfig (ZGHTTPPrivateAPI)

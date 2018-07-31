@@ -222,17 +222,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = konka;
+				ORGANIZATIONNAME = zenggen;
 				TargetAttributes = {
 					85BD590D1EE69895004C11E2 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 9UNC2Z2573;
 						ProvisioningStyle = Automatic;
 					};
 					85BD59261EE69895004C11E2 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 9UNC2Z2573;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 85BD590D1EE69895004C11E2;
 					};
 				};
@@ -467,12 +465,14 @@
 			baseConfigurationReference = 2F5D60F3D3195E47BEAA7B0E /* Pods-SampleHttpService.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UNC2Z2573;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleHttpService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZengGen.SampleHttpService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -481,12 +481,14 @@
 			baseConfigurationReference = EB48E406B3DC73F65DE47707 /* Pods-SampleHttpService.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UNC2Z2573;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleHttpService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZengGen.SampleHttpService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -494,11 +496,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9UNC2Z2573;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleHttpServiceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.konka.SampleHttpServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenggen.SampleHttpServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleHttpService.app/SampleHttpService";
 			};
 			name = Debug;
@@ -507,11 +510,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9UNC2Z2573;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleHttpServiceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.konka.SampleHttpServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenggen.SampleHttpServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleHttpService.app/SampleHttpService";
 			};
 			name = Release;
